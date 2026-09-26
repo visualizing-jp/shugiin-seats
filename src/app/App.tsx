@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { ElectionView } from "./views/ElectionView.tsx";
 import { TrendView } from "./views/TrendView.tsx";
 import { useUrlState } from "./hooks/useUrlState.ts";
+import { SeriesBar, SeriesFooter } from "./components/Brand.tsx";
 
 const VIEWS = [
   { id: "election", label: "選挙", hint: "小選挙区と比例代表" },
@@ -14,7 +15,6 @@ const SIBLINGS = [
   { href: "https://election-shugiin-timeseries.visualizing.jp/", label: "衆議院選挙で、どの党がどれだけ票を得てきたか" },
   { href: "https://election-shugiin-candidates.visualizing.jp/", label: "衆議院選挙で、誰が立候補し、誰が当選したか" },
   { href: "https://election-shugiin-turnout.visualizing.jp/", label: "衆議院選挙で、どれだけの人が投票したか" },
-  { href: "https://visualizing.jp/", label: "visualizing.jp" },
 ];
 
 export function App() {
@@ -23,6 +23,7 @@ export function App() {
   return (
     <div className="min-h-dvh">
       <header className="border-b border-rule bg-paper/85 backdrop-blur-sm">
+        <SeriesBar />
         <div className="mx-auto flex w-full max-w-[1240px] flex-wrap items-end justify-between gap-4 px-6 pt-5">
           <div className="pb-2">
             <h1 className="text-[15px] font-semibold tracking-tight">衆議院選挙で、得た票はどれだけ議席になったか</h1>
@@ -63,6 +64,7 @@ export function App() {
             </a>
           ))}
         </span>
+        <SeriesFooter />
       </footer>
     </div>
   );
